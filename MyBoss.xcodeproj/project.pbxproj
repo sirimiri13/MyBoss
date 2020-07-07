@@ -10,7 +10,6 @@
 		2D51A5E22484FEB100727697 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D51A5E12484FEB100727697 /* Main.storyboard */; };
 		2D51A5E424852D4B00727697 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D51A5E324852D4B00727697 /* LoginViewController.swift */; };
 		2D51A5E824853EF100727697 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D51A5E724853EF100727697 /* SignUpViewController.swift */; };
-		2D51A5EA2486AC8E00727697 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D51A5E92486AC8D00727697 /* Utilities.swift */; };
 		2D51A5F22487D6BC00727697 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D51A5F12487D6BC00727697 /* GoogleService-Info.plist */; };
 		2D523E222487FE6C004294B5 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D523E212487FE6C004294B5 /* QRViewController.swift */; };
 		2D523E242488CCBE004294B5 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D523E232488CCBE004294B5 /* InformationViewController.swift */; };
@@ -20,13 +19,13 @@
 		2D962D5D2484DE5F000B3C64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D962D5C2484DE5F000B3C64 /* Assets.xcassets */; };
 		2D962D602484DE5F000B3C64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D962D5E2484DE5F000B3C64 /* LaunchScreen.storyboard */; };
 		85D400294A15A60BBBA552B2 /* Pods_MyBoss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721AFAF8F6BCAB9E03F4A217 /* Pods_MyBoss.framework */; };
+		BADF739F24B4AB2700E48B03 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADF739E24B4AB2700E48B03 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2D51A5E12484FEB100727697 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2D51A5E324852D4B00727697 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2D51A5E724853EF100727697 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		2D51A5E92486AC8D00727697 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = ../../../Deadline/ios/1712061_QLyCLB/1712061_QLCLB/ClubManager/ClubManager/Utilities.swift; sourceTree = "<group>"; };
 		2D51A5F12487D6BC00727697 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2D523E212487FE6C004294B5 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		2D523E232488CCBE004294B5 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +39,7 @@
 		721AFAF8F6BCAB9E03F4A217 /* Pods_MyBoss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyBoss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3EFD42B6A37B31076ABD897 /* Pods-MyBoss.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBoss.debug.xcconfig"; path = "Target Support Files/Pods-MyBoss/Pods-MyBoss.debug.xcconfig"; sourceTree = "<group>"; };
 		B6D5A0B0FCD8BBE1EC2120D8 /* Pods-MyBoss.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBoss.release.xcconfig"; path = "Target Support Files/Pods-MyBoss/Pods-MyBoss.release.xcconfig"; sourceTree = "<group>"; };
+		BADF739E24B4AB2700E48B03 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +86,8 @@
 				2D523E212487FE6C004294B5 /* QRViewController.swift */,
 				2D51A5E724853EF100727697 /* SignUpViewController.swift */,
 				2D51A5E324852D4B00727697 /* LoginViewController.swift */,
-				2D51A5E92486AC8D00727697 /* Utilities.swift */,
 				2D523E232488CCBE004294B5 /* InformationViewController.swift */,
+				BADF739E24B4AB2700E48B03 /* Utilities.swift */,
 			);
 			path = MyBoss;
 			sourceTree = "<group>";
@@ -227,10 +227,10 @@
 			files = (
 				2D51A5E824853EF100727697 /* SignUpViewController.swift in Sources */,
 				2D5EF8102484F9C300190116 /* CalendarViewController.swift in Sources */,
-				2D51A5EA2486AC8E00727697 /* Utilities.swift in Sources */,
 				2D523E222487FE6C004294B5 /* QRViewController.swift in Sources */,
 				2D962D542484DE5C000B3C64 /* AppDelegate.swift in Sources */,
 				2D51A5E424852D4B00727697 /* LoginViewController.swift in Sources */,
+				BADF739F24B4AB2700E48B03 /* Utilities.swift in Sources */,
 				2D962D562484DE5C000B3C64 /* SceneDelegate.swift in Sources */,
 				2D523E242488CCBE004294B5 /* InformationViewController.swift in Sources */,
 			);
