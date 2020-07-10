@@ -18,5 +18,6 @@ target 'MyBoss' do
 	pod 'Firebase/Storage'
 	pod 'Firebase/Firestore'
 	pod "ParticlesLoadingView"
+	pod 'JGProgressHUD', '~> 2.1'
 
 end

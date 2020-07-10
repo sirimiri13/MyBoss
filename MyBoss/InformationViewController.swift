@@ -10,6 +10,7 @@ import UIKit
 import Photos
 import Firebase
 import FirebaseAuth
+import JGProgressHUD
 
 
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -32,17 +33,27 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     var edit : String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        imagePicker.delegate = self
-        setUpData()
-        self.loadView()
-        db.collection("user").getDocuments { (snap, err) in
-            for acc in snap!.documents {
-                if (acc.documentID == self.email){
-                    self.editSalaryButton.alpha = 0
+           imagePicker.delegate = self
+        let hud = JGProgressHUD(style: .dark)
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            self.setUpData()
+          //  self.loadView()
+            self.db.collection("user").getDocuments { (snap, err) in
+                for acc in snap!.documents {
+                    if (acc.documentID == self.email){
+                        hud.dismiss(animated: true)
+                        DispatchQueue.main.async {
+                              self.editSalaryButton.alpha = 0
+                        }
+                      
+                    }
+                   
                 }
-               
             }
         }
+     
+        
 }
         
     
