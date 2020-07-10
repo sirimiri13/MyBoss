@@ -72,7 +72,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                     self.lastNameLabel.text = Snapshot?.data()!["LastName"] as! String
                     self.emailLabel.text = Snapshot?.data()!["Email"] as! String
                     self.phoneLabel.text = Snapshot?.data()!["Phone"] as! String
-                    var salary = Snapshot?.data()!["BasicSalary"] as! String
+                    self.basicSalaryLabel.text = Snapshot?.data()!["BasicSalary"] as! String
                     }
                 }
         

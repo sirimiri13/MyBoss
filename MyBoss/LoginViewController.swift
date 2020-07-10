@@ -201,11 +201,12 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             Auth.auth().signIn(withEmail: username!, password: pass!) { (res, err) in
+                  hud.dismiss(animated: true)
                 if (err != nil){
                     self.showAlertVC(title: err!.localizedDescription)
                 }
                 else {
-                    hud.dismiss(animated: true)
+                  
                     DispatchQueue.main.async {
                         if let tabbar = (self.storyboard!.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController) {
                             let navController = UINavigationController(rootViewController: tabbar)
