@@ -19,7 +19,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     var textEdit: String = ""
     var newPw = UITextField()
     var confirmPw = UITextField()
-   
+    
     @IBOutlet weak var editSalaryButton: UIButton!
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
@@ -33,52 +33,52 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     var edit : String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-           imagePicker.delegate = self
+        imagePicker.delegate = self
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             self.setUpData()
-          //  self.loadView()
+            //  self.loadView()
             self.db.collection("user").getDocuments { (snap, err) in
                 for acc in snap!.documents {
                     if (acc.documentID == self.email){
                         hud.dismiss(animated: true)
                         DispatchQueue.main.async {
-                              self.editSalaryButton.alpha = 0
+                            self.editSalaryButton.alpha = 0
                         }
-                      
+                        
                     }
-                   
+                    
                 }
             }
         }
-     
         
-}
-        
-    
-   
-    func setUpData(){
-        db.collection("user").document(email!).getDocument { (Snapshot, err) in
-                if (err == nil){
-                    self.imageURL = Snapshot?.data()!["avatar"] as! String 
-                    let ref = Storage.storage().reference(forURL: self.imageURL)
-                            ref.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
-                                if error == nil {
-                                    self.profileImageView.image = UIImage(data: data!)
-                                }
-                            }
-                    self.firstNameLabel.text = Snapshot?.data()!["FirstName"] as! String
-                    self.lastNameLabel.text = Snapshot?.data()!["LastName"] as! String
-                    self.emailLabel.text = Snapshot?.data()!["Email"] as! String
-                    self.phoneLabel.text = Snapshot?.data()!["Phone"] as! String
-                    self.basicSalaryLabel.text = Snapshot?.data()!["BasicSalary"] as! String
-                    }
-                }
         
     }
-
-        // Do any additional setup after loading the view.
+    
+    
+    
+    func setUpData(){
+        db.collection("user").document(email!).getDocument { (Snapshot, err) in
+            if (err == nil){
+                self.imageURL = Snapshot?.data()!["avatar"] as! String
+                let ref = Storage.storage().reference(forURL: self.imageURL)
+                ref.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+                    if error == nil {
+                        self.profileImageView.image = UIImage(data: data!)
+                    }
+                }
+                self.firstNameLabel.text = Snapshot?.data()!["FirstName"] as! String
+                self.lastNameLabel.text = Snapshot?.data()!["LastName"] as! String
+                self.emailLabel.text = Snapshot?.data()!["Email"] as! String
+                self.phoneLabel.text = Snapshot?.data()!["Phone"] as! String
+                self.basicSalaryLabel.text = Snapshot?.data()!["BasicSalary"] as! String
+            }
+        }
+        
+    }
+    
+    // Do any additional setup after loading the view.
     
     @IBAction func editProfileImageTapped(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
@@ -89,7 +89,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         let alert = UIAlertController(title: "Sign Out", message: "Please confirm", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let signOutAction = UIAlertAction(title: "Sign Out", style: .default) { (UIAlertAction) in
-           try! Auth.auth().signOut()
+            try! Auth.auth().signOut()
             let vc = (self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController"))! as! LoginViewController
             vc.modalPresentationStyle =  .fullScreen
             self.present(vc, animated: false)
@@ -116,11 +116,13 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     func newPw(textFiled: UITextField) {
         self.newPw = textFiled
         self.newPw.placeholder = "Please enter new password"
+        self.newPw.isSecureTextEntry = true
     }
     func confirmPw(textFiled: UITextField) {
-           self.confirmPw = textFiled
+        self.confirmPw = textFiled
         self.confirmPw.placeholder = "Please confirm new password"
-       }
+        self.confirmPw.isSecureTextEntry = true
+    }
     
     func changePw(alert: UIAlertAction){
         if (Utilities.isPasswordValid(newPw.text!) == false){
@@ -164,7 +166,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpeg"
         storageRef.putData(pickerData!,metadata: metaData){(metaData,err) in
-        guard metaData != nil else { return}
+            guard metaData != nil else { return}
             storageRef.downloadURL{(url,err) in
                 guard url != nil else {return}
             }
@@ -186,7 +188,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func editFirstNameTapped(_ sender: Any) {
         self.edit = "FirstName"
         showAlert(textLabel: "FirstName")
-  //      self.fristNameLabel.text = textEdit
+        //      self.fristNameLabel.text = textEdit
         self.setUpData()
         
     }
@@ -195,7 +197,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func editLastNameTapped(_ sender: Any) {
         self.edit = "LastName"
         showAlert(textLabel: "LastName")
-   //     self.lastNameLabel.text = textEdit
+        //     self.lastNameLabel.text = textEdit
     }
     
     @IBAction func editPhoneTapped(_ sender: Any) {
@@ -208,7 +210,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func editSalaryTapped(_ sender: Any) {
         self.edit = "BasicSalary"
         showAlert(textLabel: "BasicSalary")
-       self.setUpData()
+        self.setUpData()
     }
     func showAlert(textLabel: String){
         let alert = UIAlertController(title: textLabel, message: "Please enter your edit", preferredStyle: .alert)
@@ -220,7 +222,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         present(alert,animated: true)
-        }
+    }
     
     func editTextField(textField: UITextField!){
         editTextField = textField
@@ -235,9 +237,9 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             self.firstNameLabel.text = editTextField.text
         }
         if (self.edit == "Phone"){
-                   self.phoneLabel.text = editTextField.text
-               }
-               
+            self.phoneLabel.text = editTextField.text
+        }
+        
         self.db.collection("user").document(email!).updateData([self.edit : self.textEdit])
         
     }
