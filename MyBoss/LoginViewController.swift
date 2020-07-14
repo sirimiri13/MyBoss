@@ -164,34 +164,34 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
         forgotPassword.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
         forgotPassword.addTarget(self, action: #selector(forgotPasswordButtonTapped(button:)), for: .touchUpInside)
         
-         sign Up Button
-        view.insertSubview(signUpButton, aboveSubview: bgView)
-        signUpButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10.0).isActive = true
-        signUpButton.leadingAnchor.constraint(equalTo: textFieldView1.leadingAnchor, constant: 0.0).isActive = true
-        signUpButton.trailingAnchor.constraint(equalTo: textFieldView1.trailingAnchor, constant: 0.0).isActive = true
-        signUpButton.addTarget(self, action: #selector(signUpButtonTapped(button:)), for: .touchUpInside)
-
-        let text = "Don't have an account? Sign Up"
-        let attributedString = NSMutableAttributedString.init(string: text)
-        let style = NSMutableParagraphStyle()
-        style.alignment = NSTextAlignment.center
-
-        let detailAttributes = [ NSAttributedString.Key.foregroundColor : templateColor,
-                                 NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16.0) ,NSAttributedString.Key.paragraphStyle : style]
-
-        attributedString.addAttributes(detailAttributes, range: NSMakeRange(0, attributedString.length))
-
-
-        let sampleLinkRange1 = text.range(of: "Sign Up")!
-        let startPos1 = text.distance(from: text.startIndex, to: sampleLinkRange1.lowerBound)
-        let endPos1 = text.distance(from: text.startIndex, to: sampleLinkRange1.upperBound)
-        let linkRange1 = NSMakeRange(startPos1, endPos1 - startPos1)
-        let linkAttributes1 = [ NSAttributedString.Key.foregroundColor : templateColor,
-                                NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16.0)]
-
-        attributedString.addAttributes(linkAttributes1, range: linkRange1)
-
-        signUpButton.setAttributedTitle(attributedString, for: .normal)
+     //    sign Up Button
+//        view.insertSubview(signUpButton, aboveSubview: bgView)
+//        signUpButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10.0).isActive = true
+//        signUpButton.leadingAnchor.constraint(equalTo: textFieldView1.leadingAnchor, constant: 0.0).isActive = true
+//        signUpButton.trailingAnchor.constraint(equalTo: textFieldView1.trailingAnchor, constant: 0.0).isActive = true
+//        signUpButton.addTarget(self, action: #selector(signUpButtonTapped(button:)), for: .touchUpInside)
+//
+//        let text = "Don't have an account? Sign Up"
+//        let attributedString = NSMutableAttributedString.init(string: text)
+//        let style = NSMutableParagraphStyle()
+//        style.alignment = NSTextAlignment.center
+//
+//        let detailAttributes = [ NSAttributedString.Key.foregroundColor : templateColor,
+//                                 NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16.0) ,NSAttributedString.Key.paragraphStyle : style]
+//
+//        attributedString.addAttributes(detailAttributes, range: NSMakeRange(0, attributedString.length))
+//
+//
+//        let sampleLinkRange1 = text.range(of: "Sign Up")!
+//        let startPos1 = text.distance(from: text.startIndex, to: sampleLinkRange1.lowerBound)
+//        let endPos1 = text.distance(from: text.startIndex, to: sampleLinkRange1.upperBound)
+//        let linkRange1 = NSMakeRange(startPos1, endPos1 - startPos1)
+//        let linkAttributes1 = [ NSAttributedString.Key.foregroundColor : templateColor,
+//                                NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16.0)]
+//
+//        attributedString.addAttributes(linkAttributes1, range: linkRange1)
+//
+//        signUpButton.setAttributedTitle(attributedString, for: .normal)
     }
     
     @objc private func signInButtonTapped(button: UIButton) {
@@ -206,7 +206,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
                     self.showAlertVC(title: err!.localizedDescription)
                 }
                 else {
-                  
+
                     DispatchQueue.main.async {
                         if let tabbar = (self.storyboard!.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController) {
                             let navController = UINavigationController(rootViewController: tabbar)
@@ -214,22 +214,22 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
                             self.present(navController, animated: true, completion: nil)
                         }
                     }
-                    
+
                 }
             }
         }
-        
+
     }
     
-    @objc private func signUpButtonTapped(button: UIButton) {
-        let back = UIBarButtonItem()
-        let vc = (storyboard?.instantiateViewController(withIdentifier: "SignUpViewController")) as! SignUpViewController
-        
-        //  let nav = UINavigationController(rootViewController: vc)
-        //  nav.modalPresentationStyle = .formSheet
-        vc.modalPresentationStyle = .popover
-        self.present(vc, animated: false)
-    }
+//    @objc private func signUpButtonTapped(button: UIButton) {
+//        let back = UIBarButtonItem()
+//        let vc = (storyboard?.instantiateViewController(withIdentifier: "SignUpViewController")) as! SignUpViewController
+//
+//        //  let nav = UINavigationController(rootViewController: vc)
+//        //  nav.modalPresentationStyle = .formSheet
+//        vc.modalPresentationStyle = .popover
+//        self.present(vc, animated: false)
+//    }
     
     @objc private func forgotPasswordButtonTapped(button: UIButton) {
         
