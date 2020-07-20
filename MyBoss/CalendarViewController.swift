@@ -17,25 +17,6 @@ class CalendarViewController: UIViewController, FSCalendarDelegate,FSCalendarDat
     var listDay : [String] = []
     let db = Firestore.firestore()
     let auth = Auth.auth().currentUser?.email
-    //
-    //    let bgImageView : UIImageView = {
-    //               let imageView = UIImageView()
-    //               imageView.translatesAutoresizingMaskIntoConstraints = false
-    //               imageView.image = UIImage(named: "sky.jpg")
-    //               imageView.contentMode = .scaleAspectFill
-    //               return imageView
-    //           }()
-    //    let bgView : UIView = {
-    //               let bgView = UIView()
-    //               bgView.translatesAutoresizingMaskIntoConstraints = false
-    //               bgView.backgroundColor = UIColor(displayP3Red: 9.0/255.0, green: 33.0/255.0, blue: 47.0/255.0, alpha: 1.0).withAlphaComponent(0.7)
-    //               return bgView
-    //           }()
-    //    let calendarView : FSCalendar = {
-    //        let calendar = FSCalendar(frame: CGRect(x: 0, y: 190, width: 414, height: 510))
-    //        return calendar
-    //
-    //    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,20 +24,15 @@ class CalendarViewController: UIViewController, FSCalendarDelegate,FSCalendarDat
         let calendar = FSCalendar(frame: CGRect(x: 0, y: 250, width: 414, height: 300))
         calendar.dataSource = self
         calendar.delegate = self
-        let hud = JGProgressHUD(style: .dark)
-     
-            self.view.addSubview(calendar)
-            self.calendar = calendar
-        hud.show(in: self.view)
-             DispatchQueue.global(qos: .background).async {
-            hud.dismiss(animated: true)
-            DispatchQueue.main.async {
-                self.getDays()
-            }
-        }
-        //  getDays()
+        self.view.addSubview(calendar)
+        self.calendar = calendar
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        listDay.removeAll()
+        getDays()
+    }
     
     func getDays(){
         
