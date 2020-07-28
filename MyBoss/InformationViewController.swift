@@ -34,29 +34,20 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        let hud = JGProgressHUD(style: .dark)
-        hud.show(in: self.view)
-        DispatchQueue.global(qos: .background).async {
-            self.setUpData()
-            //  self.loadView()
-            self.db.collection("user").getDocuments { (snap, err) in
-                for acc in snap!.documents {
-                    if (acc.documentID == self.email){
-                        hud.dismiss(animated: true)
-                        DispatchQueue.main.async {
-                            self.editSalaryButton.alpha = 0
-                        }
-                        
-                    }
-                    
-                }
-            }
-        }
-        
+        navigationController?.navigationBar.topItem?.title = "INFORMATION"
         
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        let hud = JGProgressHUD(style: .dark)
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background)
+        hud.dismiss(animated: true)
+        DispatchQueue.main.async {
+            self.setUpData()
+        }
+      
+    }
     
     func setUpData(){
         db.collection("user").document(email!).getDocument { (Snapshot, err) in

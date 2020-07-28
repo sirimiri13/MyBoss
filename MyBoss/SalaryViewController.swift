@@ -27,11 +27,12 @@ class SalaryViewController: UIViewController,UITableViewDelegate,UITableViewData
         self.setTable()
        // print(self.listSalary)
         self.tableSalaryView.reloadData()
+        navigationController?.navigationBar.topItem?.title = "SALARY"
 
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
+//        navigationController?.navigationBar.isHidden = true
     }
     func setTable(){
         db.collection("attendance").document(auth!).collection("Salary").getDocuments { (snap, err) in

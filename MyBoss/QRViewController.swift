@@ -26,10 +26,9 @@ class QRViewController: UIViewController {
     let db = Firestore.firestore()
     var qrImageURL: String = ""
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
         self.displayQR()
+        navigationController?.navigationBar.topItem?.title = "YOUR QR"
     }
     
     func displayQR(){

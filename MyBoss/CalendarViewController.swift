@@ -17,7 +17,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate,FSCalendarDat
     var listDay : [String] = []
     let db = Firestore.firestore()
     let auth = Auth.auth().currentUser?.email
-    
+    let hud = JGProgressHUD(style: .dark)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
@@ -26,12 +26,20 @@ class CalendarViewController: UIViewController, FSCalendarDelegate,FSCalendarDat
         calendar.delegate = self
         self.view.addSubview(calendar)
         self.calendar = calendar
+        calendar.reloadData()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background)
         listDay.removeAll()
-        getDays()
+        hud.dismiss(animated: true)
+        DispatchQueue.main.async {
+            self.getDays()
+        }
+    
+     
     }
     
     func getDays(){
@@ -43,6 +51,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate,FSCalendarDat
                     let temp = day as! String
                     if (temp != ""){
                         self.listDay.append(temp)
+                        self.calendar.reloadData()
                     }
                 }
             }
