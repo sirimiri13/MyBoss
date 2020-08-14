@@ -31,6 +31,10 @@ class CalendarViewController: UIViewController, FSCalendarDelegate,FSCalendarDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        navigationController?.navigationBar.topItem?.title = "MY BOSS"
+        
+        
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background)
         listDay.removeAll()
@@ -38,8 +42,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate,FSCalendarDat
         DispatchQueue.main.async {
             self.getDays()
         }
-    
-     
+        
+        
     }
     
     func getDays(){
@@ -76,16 +80,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate,FSCalendarDat
         
         return 0
     }
-    //    func addingUIElements(){
-    //        // Background imageview
-    //                   self.view.addSubview(bgImageView)
-    //                   bgImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0.0).isActive = true
-    //                   bgImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0).isActive = true
-    //                   bgImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0.0).isActive = true
-    //                   bgImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive = true
-    //        // Calendar view
-    //        self.view.insertSubview(calendarView, aboveSubview: bgImageView)
-    //
-    //    }
+ 
     
 }
+

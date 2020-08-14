@@ -34,11 +34,11 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        navigationController?.navigationBar.topItem?.title = "INFORMATION"
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.topItem?.title = "INFORMATION"
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background)

@@ -22,16 +22,19 @@ class SalaryViewController: UIViewController,UITableViewDelegate,UITableViewData
     var listSalary : [Salary] = []
     let auth = Auth.auth().currentUser?.email
     let db = Firestore.firestore()
+    let formatterMMYY = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setTable()
+      //  self.sortMonth()
        // print(self.listSalary)
         self.tableSalaryView.reloadData()
-        navigationController?.navigationBar.topItem?.title = "SALARY"
-
+       
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.topItem?.title = "SALARY"
+
 //        navigationController?.navigationBar.isHidden = true
     }
     func setTable(){
@@ -51,6 +54,7 @@ class SalaryViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        formatterMMYY.dateFormat = "MM y"
          let cell = tableView.dequeueReusableCell(withIdentifier: "SalaryCell", for: indexPath)
         cell.textLabel?.text = listSalary[indexPath.row].month
         let detail = String(listSalary[indexPath.row].salary)
@@ -58,6 +62,7 @@ class SalaryViewController: UIViewController,UITableViewDelegate,UITableViewData
         cell.detailTextLabel?.text = detail
         return cell
     }
+ 
     /*
     // MARK: - Navigation
 

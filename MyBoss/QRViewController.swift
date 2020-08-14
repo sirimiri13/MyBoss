@@ -28,7 +28,10 @@ class QRViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.displayQR()
+    }
+    override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.topItem?.title = "YOUR QR"
+
     }
     
     func displayQR(){
