@@ -19,7 +19,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
     let bgImageView : UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "bg.jpg")
+        imageView.image = UIImage(named: "userbg.jpg")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
