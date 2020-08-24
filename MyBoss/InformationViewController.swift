@@ -49,6 +49,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
       
     }
     
+    
+    // lây thông tin về show ra view
     func setUpData(){
         db.collection("user").document(email!).getDocument { (Snapshot, err) in
             if (err == nil){
@@ -71,11 +73,14 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     // Do any additional setup after loading the view.
     
+    
     @IBAction func editProfileImageTapped(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
         present(imagePicker,animated: true)
     }
     
+    
+    // signout
     @IBAction func signOutTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Sign Out", message: "Please confirm", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -90,6 +95,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         present(alert,animated: true)
         
     }
+    
+    // đổi pass
     @IBAction func changePwTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Change Password", message: "Please enter your edit", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -115,6 +122,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         self.confirmPw.isSecureTextEntry = true
     }
     
+    
+    // kiêm tra đổi pass
     func changePw(alert: UIAlertAction){
         if (Utilities.isPasswordValid(newPw.text!) == false){
             let alertError = UIAlertController(title: "Error", message:  "Please check your password is least 8 characters, contains a special character and a number", preferredStyle: .alert)
@@ -147,6 +156,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             }
         }
     }
+    
+    // picker image để thay đổi avt
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let storageRef = Storage.storage().reference().child("profile/\(email!)")
@@ -203,6 +214,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         showAlert(textLabel: "BasicSalary")
         self.setUpData()
     }
+    
     func showAlert(textLabel: String){
         let alert = UIAlertController(title: textLabel, message: "Please enter your edit", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

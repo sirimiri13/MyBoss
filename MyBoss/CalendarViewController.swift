@@ -29,12 +29,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate,FSCalendarDat
         calendar.reloadData()
         
     }
-    
     override func viewWillAppear(_ animated: Bool) {
-        
         navigationController?.navigationBar.topItem?.title = "MY BOSS"
-        
-        
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background)
         listDay.removeAll()
@@ -46,6 +42,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate,FSCalendarDat
         
     }
     
+    // lấy ngày làm việc của nhân viên đang đăng nhập
     func getDays(){
         
         db.collection("attendance").document(auth!).collection("days").getDocuments { (snap, err) in
@@ -65,11 +62,14 @@ class CalendarViewController: UIViewController, FSCalendarDelegate,FSCalendarDat
         
     }
     
+    // format ngày
     fileprivate lazy var dateFormatter2: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         return formatter
     }()
+    
+    // đánh dấu ngày làm lên lịch
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         calendar.appearance.eventDefaultColor = .red
         let dateString = self.dateFormatter2.string(from: date)

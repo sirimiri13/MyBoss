@@ -13,7 +13,6 @@ import JGProgressHUD
 
 class LoginViewController: UIViewController, UINavigationControllerDelegate{
     
-    
     let templateColor = UIColor.white
     var emailTextFied = UITextField()
     let bgImageView : UIImageView = {
@@ -129,14 +128,7 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
         textFieldView2.textField.isSecureTextEntry = true
         textFieldView2.textField.textColor = templateColor
         
-        //            // Error Label
-        //            view.insertSubview(errorLabel, aboveSubview: bgView)
-        //           errorLabel.topAnchor.constraint(equalTo: textFieldView2.bottomAnchor, constant: 0.0).isActive = true
-        //            errorLabel.leadingAnchor.constraint(equalTo: textFieldView2.leadingAnchor, constant: 0.0).isActive = true
-        //            errorLabel.trailingAnchor.constraint(equalTo: textFieldView2.trailingAnchor, constant: 0.0).isActive = true
-        //            errorLabel.heightAnchor.constraint(equalTo: textFieldView2.heightAnchor, constant: 0.0).isActive = true
-        //
-        
+      
         
         // Sign In Button
         view.insertSubview(signInButton, aboveSubview: bgView)
@@ -163,35 +155,6 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
         forgotPassword.setTitleColor(templateColor, for: .normal)
         forgotPassword.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
         forgotPassword.addTarget(self, action: #selector(forgotPasswordButtonTapped(button:)), for: .touchUpInside)
-        
-        //    sign Up Button
-        //        view.insertSubview(signUpButton, aboveSubview: bgView)
-        //        signUpButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10.0).isActive = true
-        //        signUpButton.leadingAnchor.constraint(equalTo: textFieldView1.leadingAnchor, constant: 0.0).isActive = true
-        //        signUpButton.trailingAnchor.constraint(equalTo: textFieldView1.trailingAnchor, constant: 0.0).isActive = true
-        //        signUpButton.addTarget(self, action: #selector(signUpButtonTapped(button:)), for: .touchUpInside)
-        //
-        //        let text = "Don't have an account? Sign Up"
-        //        let attributedString = NSMutableAttributedString.init(string: text)
-        //        let style = NSMutableParagraphStyle()
-        //        style.alignment = NSTextAlignment.center
-        //
-        //        let detailAttributes = [ NSAttributedString.Key.foregroundColor : templateColor,
-        //                                 NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16.0) ,NSAttributedString.Key.paragraphStyle : style]
-        //
-        //        attributedString.addAttributes(detailAttributes, range: NSMakeRange(0, attributedString.length))
-        //
-        //
-        //        let sampleLinkRange1 = text.range(of: "Sign Up")!
-        //        let startPos1 = text.distance(from: text.startIndex, to: sampleLinkRange1.lowerBound)
-        //        let endPos1 = text.distance(from: text.startIndex, to: sampleLinkRange1.upperBound)
-        //        let linkRange1 = NSMakeRange(startPos1, endPos1 - startPos1)
-        //        let linkAttributes1 = [ NSAttributedString.Key.foregroundColor : templateColor,
-        //                                NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16.0)]
-        //
-        //        attributedString.addAttributes(linkAttributes1, range: linkRange1)
-        //
-        //        signUpButton.setAttributedTitle(attributedString, for: .normal)
     }
     
     @objc private func signInButtonTapped(button: UIButton) {
@@ -221,15 +184,6 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
         
     }
     
-    //    @objc private func signUpButtonTapped(button: UIButton) {
-    //        let back = UIBarButtonItem()
-    //        let vc = (storyboard?.instantiateViewController(withIdentifier: "SignUpViewController")) as! SignUpViewController
-    //
-    //        //  let nav = UINavigationController(rootViewController: vc)
-    //        //  nav.modalPresentationStyle = .formSheet
-    //        vc.modalPresentationStyle = .popover
-    //        self.present(vc, animated: false)
-    //    }
     
     @objc private func forgotPasswordButtonTapped(button: UIButton) {
         let alert = UIAlertController(title: "Forgot Password",message: "Please enter your email",preferredStyle: .alert)
@@ -258,8 +212,9 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate{
         emailTextFied = textField
         emailTextFied.placeholder = "Enter your emaill"
     }
+    
     func showAlertVC(title: String) {
-        let alertController = UIAlertController(title: title, message: "Need to implement code based on user requirements", preferredStyle: UIAlertController.Style.alert)
+        let alertController = UIAlertController(title: "MESSAGE", message: title, preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion:{})

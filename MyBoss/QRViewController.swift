@@ -13,8 +13,6 @@ import JGProgressHUD
 
 
 class QRViewController: UIViewController {
-    //var image = UIImage()
-    
     let titleLabel : UILabel = {
         let label = UILabel(frame: CGRect(x: 157, y: 50, width: 100, height: 25))
         label.text = "YOUR OR"
@@ -34,6 +32,9 @@ class QRViewController: UIViewController {
 
     }
     
+    
+    
+    // lây QR từ fb về show ra view
     func displayQR(){
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: self.view)
@@ -60,14 +61,5 @@ class QRViewController: UIViewController {
 }
 
 
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destination.
- // Pass the selected object to the new view controller.
- }
- */
 
 
